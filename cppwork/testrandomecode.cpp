@@ -4,24 +4,7 @@
 class MyClass
 {
 private:
-    int *_number;
-
-public:
-    MyClass()
-    {
-        std::cout << "Allocate memory\n";
-        _number = (int *)malloc(sizeof(int));
-    }
-    ~MyClass()
-    {
-        std::cout << "Delete memory\n";
-        free(_number);
-    }
-    void setNumber(int number)
-    {
-        *_number = number;
-        std::cout << "Number: " << _number << "\n";
-    }
+    static float constexpr pi = 3.14;
 };
 
 
@@ -34,9 +17,13 @@ int main()
     // free(myClass);
 	  
 	// allocate memory using new
-    MyClass myClass;
-    myClass.setNumber(42); // works as expected
+    // MyClass myClass;
+    // myClass.setNumber(42); // works as expected
     // delete myClass;
-
+    std::unique_ptr<int> unique = std::make_unique<int>(); // create a unique pointer on the stack
+    *unique = 2; // assign a value
+    // delete is not neccessary
+    // std::unique_ptr<int> p = unique; // Not allowed
+    std::unique_ptr<int> p = std::move(unique);
     return 0;
 }

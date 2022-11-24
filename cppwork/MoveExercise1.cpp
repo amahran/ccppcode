@@ -8,17 +8,6 @@ Memory Management exercises part 1: Pass data between functions without using mo
 
 using namespace std;
 
-class myClass {
-    int i;
-public:
-    myClass(){ std::cout << "C'tor called \n"; }
-    ~myClass() { std::cout << "Destructor called \n"; }
-};
-
-myClass *f() {
-    myClass *m = new myClass();
-    return m; 
-}
 // pass back by pointer (old C++)
 const int array_size = 2; // determines size of the random number array
 vector<int> *RandomNumbers1()
@@ -48,9 +37,8 @@ int main()
     // store the data in a suitable variable named 'random_numbers_1' and free the associated memory immediately afterwards
 
     // SOLUTION to exercise 1-1
-    // vector<int> *random_numbers_1 = RandomNumbers1(); // return-by-pointer
-    myClass *m1 = f();
-    delete m1;
+    vector<int> *random_numbers_1 = RandomNumbers1(); // return-by-pointer
+
     /* EXERCISE 1-2: Get access to data using pass-by-reference */
     // store the data in a suitable variable named 'random_numbers_2'
 
